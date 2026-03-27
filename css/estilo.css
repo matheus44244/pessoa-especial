@@ -1,45 +1,75 @@
 body {
     margin: 0;
     padding: 0;
+    height: 100vh;
     font-family: Arial, sans-serif;
 
-    /* imagem de fundo */
-    background: url("spiderman.jpg") no-repeat center center fixed;
-    background-size: cover;
+    /* Fundo vermelho + azul */
+    background: radial-gradient(circle at top left, #ff0000 40%, transparent 40%),
+                radial-gradient(circle at bottom right, #0000ff 40%, transparent 40%),
+                linear-gradient(135deg, #ff0000, #0000ff);
+
+    background-blend-mode: screen;
 }
 
-/* camada escura pra facilitar leitura */
+/* camada escura pra destacar o texto */
 .overlay {
     width: 100%;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.6);
 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* caixa da mensagem */
 .container {
-    background-color: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.8);
     padding: 30px;
     border-radius: 15px;
     text-align: center;
     max-width: 420px;
     color: white;
-    box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    box-shadow: 0 0 20px black;
 }
 
+/* efeito de "teia" usando linhas */
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,0.1) 0px,
+            rgba(255,255,255,0.1) 1px,
+            transparent 1px,
+            transparent 40px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            rgba(255,255,255,0.1) 0px,
+            rgba(255,255,255,0.1) 1px,
+            transparent 1px,
+            transparent 40px
+        );
+    pointer-events: none;
+}
+
+/* título */
 h1 {
     color: #ff3c3c;
 }
 
+/* texto */
 p {
     font-size: 18px;
-    margin: 10px 0;
 }
 
+/* destaque final */
 .final {
-    margin-top: 20px;
-    font-weight: bold;
     color: #00ffcc;
+    font-weight: bold;
 }
